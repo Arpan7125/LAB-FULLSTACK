@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Schedule - College Transport Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-4">
+          <span class="font-bold text-xl text-blue-600">College Transport</span>
+        </div>
+        <div class="hidden md:flex space-x-6">
+          <a href="lab02.html" class="flex items-center text-gray-700 hover:text-blue-600">
+            <i class="fas fa-home mr-2"></i> Home
+          </a>
+          <a href="routes.html" class="flex items-center text-gray-700 hover:text-blue-600">
+            <i class="fas fa-route mr-2"></i> Routes
+          </a>
+          <a href="schedule.html" class="flex items-center text-gray-700 hover:text-blue-600">
+            <i class="fas fa-calendar-alt mr-2"></i> Schedule
+          </a>
+          <a href="contact.html" class="flex items-center text-gray-700 hover:text-blue-600">
+            <i class="fas fa-envelope mr-2"></i> Contact
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="max-w-3xl mx-auto mt-10 px-4">
+    <h2 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-calendar-alt mr-2 text-blue-600"></i> Bus Schedule</h2>
+    <table class="min-w-full bg-white rounded shadow">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border-b">Route</th>
+          <th class="py-2 px-4 border-b">Departure</th>
+          <th class="py-2 px-4 border-b">Arrival</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="py-2 px-4 border-b">City Center - Campus</td>
+          <td class="py-2 px-4 border-b">8:00 AM</td>
+          <td class="py-2 px-4 border-b">8:45 AM</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-4 border-b">North Side - Campus</td>
+          <td class="py-2 px-4 border-b">8:15 AM</td>
+          <td class="py-2 px-4 border-b">9:00 AM</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-4 border-b">South Side - Campus</td>
+          <td class="py-2 px-4 border-b">8:30 AM</td>
+          <td class="py-2 px-4 border-b">9:15 AM</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <footer class="bg-blue-600 text-white text-center py-4">
+    <div class="flex justify-center items-center space-x-2">
+      <!-- SVG Location Pin -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21c-4.418 0-8-4.03-8-9a8 8 0 1116 0c0 4.97-3.582 9-8 9z" />
+        <circle cx="12" cy="12" r="3" fill="white"/>
+      </svg>
+      <span>College Transport Services &copy; 2025</span>
+    </div>
+  </footer>
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

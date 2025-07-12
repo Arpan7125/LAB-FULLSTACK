@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vehicle Management - About Us</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>About Us</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="page2.html">Features</a></li>
+        <li><a href="page3.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Our Mission</h2>
+      <p>To provide a comprehensive vehicle management system that enhances efficiency and user experience.</p>
+    </section>
+
+    <section>
+      <h2>Our Team</h2>
+      <p>We are a group of passionate developers dedicated to creating innovative solutions for vehicle management.</p>
+    </section>
+  </main>
+   <section>
+      <h2 id="feedback">Feedback</h2>
+      <form id="feedbackForm">
+        <input type="text" id="feedbackName" placeholder="Your Name" required>
+        <textarea id="feedbackComment" placeholder="Your Comment" required></textarea>
+        <button type="submit">Submit Feedback</button>
+      </form>
+      <div id="feedbackList"></div>
+    </section>
+
+
+  <footer>
+    <p>&copy; Arpan Mukherjee 28th June 2025 Vehicle Management System</p>
+  </footer>
+  <script>
+    function renderFeedback() {
+      const feedbackList = document.getElementById("feedbackList");
+      const feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+      feedbackList.innerHTML = feedbacks.map(f =>
+        `<div class="feedback-item">
+          <strong>${f.name}</strong>: ${f.comment}
+        </div>`
+      ).join("");
+    }
+
+    document.getElementById("feedbackForm").onsubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById("feedbackName").value.trim();
+      const comment = document.getElementById("feedbackComment").value.trim();
+      if (name && comment) {
+        const feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+        feedbacks.push({ name, comment });
+        localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+        renderFeedback();
+        this.reset();
+      }
+    };
+  </script>
+</body>
+</html>

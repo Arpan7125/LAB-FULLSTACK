@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vehicle Management - Features</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    #map iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vehicle Management Features</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="page2.html">Features</a></li>
+        <li><a href="page3.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-container">
+    <div class="box">Add Vehicle</div>
+    <div class="box">View Location</div>
+    <div class="box">Save Driver Info</div>
+  </main>
+
+  <section>
+    <h2>Vehicle Location</h2>
+    <button onclick="getLocation()">Get Vehicle Location</button>
+    <p id="location">Click the button to find your location.</p>
+    <div id="map">
+      <iframe id="google_map" src="https://maps.google.com?output=embed"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; Arpan Mukherjee 28th June 2025 Vehicle Management System</p>
+  </footer>
+
+  <script>
+    function getLocation() {
+      const output = document.getElementById("location");
+      if (!navigator.geolocation) {
+        output.innerText = "Geolocation is not supported by your browser.";
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          output.innerText = `Latitude: ${lat.toFixed(5)}°, Longitude: ${lng.toFixed(5)}°`;
+
+          const mapUrl = `https://maps.google.com?q=${lat},${lng}&z=15&output=embed`;
+          document.getElementById("google_map").src = mapUrl;
+        },
+        (error) => {
+          output.innerText = `Error: ${error.message}`;
+        }
+      );
+    }
+  </script>
+</body>
+</html>
