@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoffeeHub - Feedback</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-yellow-50 text-gray-800">
+  <nav class="bg-yellow-900 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">CoffeeHub</h1>
+    <div class="space-x-4">
+      <a href="index.html"><i class="text-yellow-600 hover:text-gray-800"> Home</i></a>
+      <a href="contact.html"><i class="text-yellow-600 hover:text-gray-800"> Contact</i></a>
+    </div>
+  </nav>
+
+  <section class="p-4 max-w-md mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Feedback Form</h2>
+    <form id="feedbackForm" class="space-y-4">
+      <input id="name" type="text" placeholder="Name" class="w-full p-2 border rounded focus:ring-2 ring-yellow-400">
+      <input id="email" type="email" placeholder="Email" class="w-full p-2 border rounded focus:ring-2 ring-yellow-400">
+      <input id="favoriteCoffee" type="text" placeholder="Favorite Coffee" class="w-full p-2 border rounded focus:ring-2 ring-yellow-400">
+      <button type="submit" class="bg-yellow-800 hover:bg-yellow-700 text-white px-4 py-2 rounded">Submit</button>
+    </form>
+    <p id="greetingMsg" class="mt-4 font-semibold text-center"></p>
+    <p id="locationMsg" class="text-sm text-center"></p>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('feedbackForm');
+      const greetingMsg = document.getElementById('greetingMsg');
+
+      // Show greeting if data exists
+      function showGreeting() {
+        const name = localStorage.getItem('userName');
+        const coffee = localStorage.getItem('userCoffee');
+        if (name && coffee) {
+          greetingMsg.textContent = `Hello, ${name}! You Love ${coffee}.`;
+        } else {
+          greetingMsg.textContent = '';
+        }
+      }
+
+      showGreeting();
+
+      // Save to localStorage on submit
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const coffee = document.getElementById('favoriteCoffee').value.trim();
+        if (name && coffee) {
+          localStorage.setItem('userName', name);
+          localStorage.setItem('userCoffee', coffee);
+          showGreeting();
+          form.reset();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
